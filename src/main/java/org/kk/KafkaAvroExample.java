@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import java.util.Properties;
 
 public class KafkaAvroExample {
-    public static final String SCHEMA_URL = "http://schema-registry.server.name:8081/";
+    public static final String SCHEMA_URL = "http://localhost:9081";
 
     public static void main(String[] args) {
         Properties props = new Properties();
