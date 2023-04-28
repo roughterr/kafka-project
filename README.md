@@ -25,3 +25,8 @@ docker run -e KAFKA_ZOOKEEPER_CONNECT=host.docker.internal:2181 -e KAFKA_ADVERTI
 Exception in thread "main" org.apache.kafka.common.config.ConfigException: Invalid value io.confluent.kafka.serializers.KafkaAvroSerializer for configuration key.serializer: Class io.confluent.kafka.serializers.KafkaAvroSerializer could not be found.
 https://intellij-support.jetbrains.com/hc/en-us/community/posts/207108385-IntelliJ-not-able-to-resolve-classes-of-external-Libraries-for-Maven-projects
 In IntelliJ IDEA: File -> Invalidate Caches
+
+### Download Confluent Platform using only Confluent Community components https://docs.confluent.io/platform/current/installation/installing_cp/zip-tar.html#prod-kafka-cli-install
+### Set $CONFLUENT_HOME variable to the path of a folder where you extracted the Confluent Platform
+### Start Schema Registry. Run this command in its own terminal.
+${CONFLUENT_HOME}/bin/schema-registry-start ${CONFLUENT_HOME}/etc/schema-registry/schema-registry.properties

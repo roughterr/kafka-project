@@ -1,4 +1,4 @@
-package org.kk;
+package org.kk.examples;
 
 import java.util.Properties;
 
