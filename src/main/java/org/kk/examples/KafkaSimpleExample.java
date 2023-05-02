@@ -6,18 +6,9 @@ import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.kk.DemoProducerCallback;
 
 public class KafkaSimpleExample {
-    private static class DemoProducerCallback implements Callback {
-        @Override
-        public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-            System.out.println("Callback onCompletion");
-            if (e != null) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public static void main(String[] args) {
         Properties kafkaProps = new Properties();
         kafkaProps.put("bootstrap.servers", "localhost:9092");
