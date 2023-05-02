@@ -9,7 +9,7 @@ import org.kk.KafkaProducerUtils;
 public class KafkaProduceGeneratedObjects {
     public static void main(String[] args) {
         KafkaProducer kafkaProducer = KafkaProducerUtils.getProducer();
-        String topic = "abba";
+        String topic = "customers2";
 
         // We keep producing new events until someone ctrl-c
         while (true) {

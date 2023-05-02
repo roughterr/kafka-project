@@ -8,7 +8,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.kk.KafkaProducerUtils;
 
-public class KafkaAvroExample {
+public class SchemaBuilderExample {
 
     public static void main(String[] args) {
         KafkaProducer kafkaProducer = KafkaProducerUtils.getProducer();
@@ -25,7 +25,7 @@ public class KafkaAvroExample {
         entry1.put("date", 1L);
         entry1.put("counter", 2);
         entry1.put("mc", "3");
-        kafkaProducer.send(new ProducerRecord<>("abba", entry1));
+        kafkaProducer.send(new ProducerRecord<>("customers1", entry1));
 
     }
 }
