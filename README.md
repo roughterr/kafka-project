@@ -1,21 +1,24 @@
 ### Install Zookeeper, Kafka locally
 
+### Start Zookeper
+zkServer start
+
 ### start Kafka server:
 kafka-server-start -daemon /opt/homebrew/etc/kafka/server.properties
 
-### create topic:
+### Create topic:
 kafka-topics --create abba --bootstrap-server=localhost:9092
 
-### see the list of Kafka topics:
+### See the list of Kafka topics:
 kafka-topics --list --bootstrap-server localhost:9092
 
-### describe topic:
+### Describe topic:
 kafka-topics --bootstrap-server localhost:9092 --describe --topic abba
 
-### send messages to the topic:
+### Send messages to the topic:
 kafka-console-producer --bootstrap-server localhost:9092 --topic abba
 
-### receive messages from the topic:
+### Receive messages from the topic:
 kafka-console-consumer --bootstrap-server localhost:9092 --topic abba --from-beginning
 
 ### In case you receive the following error:

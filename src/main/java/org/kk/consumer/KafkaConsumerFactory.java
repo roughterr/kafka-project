@@ -11,8 +11,9 @@ public class KafkaConsumerFactory {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConstants.KAFKA_SERVER);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "CountryCounter");
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, KafkaConstants.KAFKA_AVRO_SERIALIZER);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaConstants.KAFKA_AVRO_SERIALIZER);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, KafkaConstants.KAFKA_AVRO_DESERIALIZER);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaConstants.KAFKA_AVRO_DESERIALIZER);
+        props.put("schema.registry.url", KafkaConstants.SCHEMA_URL);
         return new KafkaConsumer<>(props);
     }
 }
