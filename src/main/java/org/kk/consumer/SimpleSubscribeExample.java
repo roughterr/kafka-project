@@ -1,9 +1,9 @@
 package org.kk.consumer;
 
+import org.apache.kafka.clients.consumer.CommitFailedException;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.metrics.stats.CumulativeCount;
 import org.kk.Customer;
 import org.kk.KafkaConstants;
 
@@ -20,15 +20,20 @@ public class SimpleSubscribeExample {
         KafkaConsumerFactory consumerFactory = new KafkaConsumerFactory();
         KafkaConsumer consumer = consumerFactory.getConsumer();
         consumer.subscribe(Collections.singletonList(KafkaConstants.CUSTOMER_TOPIC_NAME));
-        Duration timeout = Duration.ofMillis(100);
         // poll for new data
-        while(true){
+        while (true) {
             ConsumerRecords<String, Customer> records =
                     consumer.poll(TIMEOUT);
 
-            for (ConsumerRecord<String, Customer> record : records){
+            for (ConsumerRecord<String, Customer> record : records) {
                 System.out.println("Key: " + record.key() + ", Value: " + record.value());
                 System.out.println("Partition: " + record.partition() + ", Offset:" + record.offset());
+            }
+            //
+            try {
+                consumer.commitSync();
+            } catch (CommitFailedException e) {
+                e.printStackTrace();
             }
         }
     }
