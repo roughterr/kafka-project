@@ -1,4 +1,4 @@
-package org.kk.examples;
+package org.kk.producer;
 
 import java.util.Properties;
 

@@ -1,4 +1,4 @@
-package org.kk.examples;
+package org.kk.producer;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;

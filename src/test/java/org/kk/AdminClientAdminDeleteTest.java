@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 import static org.kk.KafkaConstants.CUSTOMER_TOPIC_NAME;
@@ -18,11 +17,11 @@ import static org.kk.KafkaConstants.CUSTOMER_TOPIC_NAME;
 public class AdminClientAdminDeleteTest {
     private static List<String> TOPIC_LIST = List.of(CUSTOMER_TOPIC_NAME);
 
+    private AdminClientFactory adminClientFactory = new AdminClientFactory();
+
     @Test
     public void deleteTopicTest() throws ExecutionException, InterruptedException {
-        Properties props = new Properties();
-        props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        AdminClient admin = AdminClient.create(props);
+        AdminClient admin = adminClientFactory.newAdminClient();
         try {
             //create if doesn't exist
             CreateTopicsResult newTopic = admin.createTopics(Collections.singletonList(
